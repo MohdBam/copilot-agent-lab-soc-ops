@@ -94,11 +94,15 @@ Want to tailor the game to your event?
 **Customize Questions:** Edit [`src/data/questions.ts`](src/data/questions.ts) with prompts specific to your group or theme.
 
 ```typescript
+// Example from questions.ts - customize these 25+ prompts!
 export const questions: string[] = [
+  "bikes to work",
+  "has lived in another country",
   "has a pet",
   "speaks more than 2 languages",
   "has traveled to Asia",
-  // Add your own!
+  // ... 20+ more prompts
+  // Add your own event-specific prompts!
 ];
 ```
 
