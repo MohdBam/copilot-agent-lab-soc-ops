@@ -37,3 +37,32 @@ Before commits, verify:
 
 ## Design
 Follow `frontend-design.instructions.md` - avoid generic AI aesthetics. Mobile-first with `aspect-square` grids, `active:` states for touch. Color semantics: accent (interactive), marked (selected), bingo (win).
+
+### Cyberpunk Neon Theme
+**Visual System**: High-contrast dark UI with restrained neon accents (cyan/magenta/amber) and subtle tech textures.
+
+**Palette**:
+- **Primary (cyan)**: `--color-accent` (#00E8FF) - interactive elements, focus rings
+- **Secondary (magenta)**: `--color-marked` (#FF3AC8) - marked squares, active states
+- **Tertiary (amber)**: `--color-bingo` (#FFD859) - win states, celebrations
+- **Backgrounds**: `--color-bg` (#0A0F14), `--color-bg-alt` (#0D1321), `--color-surface` (6% white overlay)
+- **Text**: Primary (#E2E8F0), secondary (#94A3B8), muted (#64748B), inverse (#0A0F14)
+- **Borders**: `--color-border` (#1F2937), `--color-border-strong` (#334155)
+
+**Effects**:
+- **Glows**: Max 2 shadow layers, 6-10px blur, ≤40% opacity. Utilities: `.glow-accent`, `.glow-marked`, `.glow-bingo` with `-strong` variants
+- **Surfaces**: `.glass-surface` (translucent with backdrop blur), `.scanlines` (subtle 2px repeating lines)
+- **Motion**: `--ease-standard`, `--ease-spring`, durations 120ms (fast), 200ms (mid), 300ms (slow)
+- **Radius**: xs(4px), sm(6px), md(10px), lg(14px), xl(18px)
+
+**Component Patterns**:
+- **Tiles**: Glass surface, magenta border when marked, cyan border for FREE, amber glow on win
+- **Buttons**: Cyan glow on hover/focus, scale 0.98 on active, 200ms spring easing
+- **Modals**: Dim backdrop (70% black), glass card with cyan header strip
+- **Win Animation**: 500ms amber sweep across winning path, settle to soft glow
+
+**Accessibility**:
+- Contrast ≥4.5:1 for text, ≥3:1 for borders
+- `focus-visible` cyan rings on all interactive elements
+- Touch targets ≥44px with distinct `active:` feedback
+- `prefers-reduced-motion` disables all glows, sweeps, and animations
