@@ -2,60 +2,98 @@ interface StartScreenProps {
   onStart: () => void;
 }
 
+const PREVIEW_QUESTIONS = [
+  "has a pet",
+  "speaks 2+ languages",
+  "loves cooking",
+  "plays an instrument"
+];
+
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-6 relative">
+    <div className="flex flex-col items-center justify-center min-h-full px-4 py-6 sm:px-6 sm:py-8 relative overflow-hidden">
+      {/* Hero background gradient with scanlines */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div 
+          className="absolute inset-0 scanlines"
+          style={{
+            background: 'linear-gradient(135deg, rgba(0, 232, 255, 0.15) 0%, rgba(255, 58, 200, 0.15) 100%)'
+          }}
+        ></div>
+      </div>
+
       {/* Ambient edge glows */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-3xl bg-[#00E8FF]"></div>
         <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full opacity-10 blur-3xl bg-[#FF3AC8]"></div>
       </div>
 
-      <div className="text-center max-w-sm relative z-10">
-        {/* Title with cyan gradient accent */}
-        <div className="mb-8">
-          <h1 className="text-5xl font-bold tracking-tight mb-2" style={{
+      <div className="text-center max-w-xl relative z-10 w-full">
+        {/* Hero headline */}
+        <div className="mb-6 sm:mb-8 fade-in-up">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-3 leading-tight" style={{
             background: 'linear-gradient(135deg, #00E8FF 0%, #7FEFFF 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            textShadow: '0 0 20px rgba(0, 232, 255, 0.3)'
+            backgroundClip: 'text'
           }}>
-            SOC OPS
+            Break the Ice.<br />Meet Your People.
           </h1>
-          <p className="text-xl text-[#94A3B8] tracking-wide uppercase text-sm">Social Bingo</p>
+          <p className="text-base sm:text-lg text-[#94A3B8] max-w-md mx-auto">
+            Connect through conversation. Play social bingo to discover what makes your team unique.
+          </p>
         </div>
         
-        {/* Glass card with scanlines */}
-        <div className="glass-surface scanlines rounded-[var(--radius-lg)] p-6 border border-[#334155] mb-8">
-          <h2 className="font-semibold text-[#E2E8F0] mb-4 text-lg">How to play</h2>
-          <ul className="text-left text-[#94A3B8] text-sm space-y-2.5">
-            <li className="flex items-start">
-              <span className="text-accent mr-2 flex-shrink-0">▹</span>
-              <span>Find people who match the questions</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-accent mr-2 flex-shrink-0">▹</span>
-              <span>Tap a square when you find a match</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-accent mr-2 flex-shrink-0">▹</span>
-              <span>Get 5 in a row to win!</span>
-            </li>
-          </ul>
+        {/* Feature bullets */}
+        <div className="mb-6 sm:mb-8 fade-in-up fade-in-delay-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto">
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-sm text-[#94A3B8]">
+              <span className="text-accent text-lg">✓</span>
+              <span>Start conversations</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-sm text-[#94A3B8]">
+              <span className="text-accent text-lg">✓</span>
+              <span>Learn fun facts</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-sm text-[#94A3B8]">
+              <span className="text-accent text-lg">✓</span>
+              <span>Build connections</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-sm text-[#94A3B8]">
+              <span className="text-accent text-lg">✓</span>
+              <span>Win together</span>
+            </div>
+          </div>
         </div>
 
-        {/* CTA with cyan glow */}
-        <button
-          onClick={onStart}
-          className="w-full bg-accent text-[#0A0F14] font-bold py-4 px-8 rounded-[var(--radius-md)] text-lg transition-all glow-accent hover:glow-accent-strong active:scale-[0.98]"
-          style={{
-            transitionDuration: 'var(--dur-mid)',
-            transitionTimingFunction: 'var(--ease-spring)'
-          }}
-        >
-          START GAME
-        </button>
+        {/* 2x2 Preview Grid */}
+        <div className="mb-6 sm:mb-8 fade-in-up fade-in-delay-2">
+          <p className="text-xs uppercase tracking-wider text-[#64748B] mb-3">Preview</p>
+          <div className="grid grid-cols-2 gap-2 max-w-xs mx-auto">
+            {PREVIEW_QUESTIONS.map((question, index) => (
+              <div
+                key={index}
+                className="glass-surface aspect-square rounded-[var(--radius-sm)] border border-accent flex items-center justify-center p-3 text-xs sm:text-sm text-center text-[#E2E8F0] cursor-default select-none"
+              >
+                {question}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="fade-in-up fade-in-delay-3">
+          <button
+            onClick={onStart}
+            className="w-full max-w-xs mx-auto block bg-accent text-[#0A0F14] font-bold py-4 px-8 rounded-[var(--radius-md)] text-lg transition-all glow-accent hover:glow-accent-strong hover:scale-[1.02] active:scale-[0.98]"
+            style={{
+              transitionDuration: 'var(--dur-mid)',
+              transitionTimingFunction: 'var(--ease-spring)'
+            }}
+          >
+            Start Game
+          </button>
+        </div>
       </div>
     </div>
   );
