@@ -14,29 +14,19 @@ export function StartScreen({ onStart }: StartScreenProps) {
     <div className="flex flex-col items-center justify-center min-h-full px-4 py-6 sm:px-6 sm:py-8 relative overflow-hidden">
       {/* Hero background gradient with scanlines */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div 
-          className="absolute inset-0 scanlines"
-          style={{
-            background: 'linear-gradient(135deg, rgba(0, 232, 255, 0.15) 0%, rgba(255, 58, 200, 0.15) 100%)'
-          }}
-        ></div>
+        <div className="absolute inset-0 scanlines hero-gradient-bg"></div>
       </div>
 
       {/* Ambient edge glows */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-3xl bg-[#00E8FF]"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full opacity-10 blur-3xl bg-[#FF3AC8]"></div>
+        <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-3xl bg-accent"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full opacity-10 blur-3xl bg-marked"></div>
       </div>
 
       <div className="text-center max-w-xl relative z-10 w-full">
         {/* Hero headline */}
         <div className="mb-6 sm:mb-8 fade-in-up">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-3 leading-tight" style={{
-            background: 'linear-gradient(135deg, #00E8FF 0%, #7FEFFF 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
-          }}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-3 leading-tight hero-title-gradient">
             Break the Ice.<br />Meet Your People.
           </h1>
           <p className="text-base sm:text-lg text-[#94A3B8] max-w-md mx-auto">
