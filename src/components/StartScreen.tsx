@@ -109,7 +109,7 @@ export function StartScreen({ onStart }: StartScreenProps) {
 
         {/* Section 3: Why You'll Love It */}
         <section className="space-y-6">
-          <h2 className="text-3xl font-bold text-center text-[#E2E8F0] animate-fade-in-up stagger-4">
+          <h2 className="text-3xl font-bold text-center text-[#E2E8F0] animate-fade-in-up stagger-8">
             Why You'll Love It
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -118,21 +118,21 @@ export function StartScreen({ onStart }: StartScreenProps) {
               headline="Ice Breaker"
               description="No more awkward small talk. Every prompt gives you something interesting to discuss."
               accentColor="cyan"
-              staggerClass="stagger-5"
+              staggerClass="stagger-9"
             />
             <FeatureCard
               icon="💬"
               headline="Real Connections"
               description="Go beyond name tags. Discover shared experiences and unexpected commonalities."
               accentColor="magenta"
-              staggerClass="stagger-6"
+              staggerClass="stagger-9"
             />
             <FeatureCard
               icon="🎉"
               headline="Fun & Fast"
               description="Quick to learn, endlessly replayable. Perfect for events of any size."
               accentColor="amber"
-              staggerClass="stagger-7"
+              staggerClass="stagger-9"
             />
           </div>
         </section>
@@ -155,7 +155,7 @@ export function StartScreen({ onStart }: StartScreenProps) {
                   }
                 `}
               >
-                <span className="wrap-break-word hyphens-auto">{square.text}</span>
+                <span className="break-words hyphens-auto">{square.text}</span>
               </div>
             ))}
           </div>
