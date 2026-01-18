@@ -50,6 +50,18 @@ export function generateBoard(): BingoSquareData[] {
 }
 
 /**
+ * Generate a scavenger checklist from all questions (no free space)
+ */
+export function generateScavengerList(): BingoSquareData[] {
+  return questions.map((text, index) => ({
+    id: index,
+    text,
+    isMarked: false,
+    isFreeSpace: false,
+  }));
+}
+
+/**
  * Toggle a square's marked state
  */
 export function toggleSquare(board: BingoSquareData[], squareId: number): BingoSquareData[] {

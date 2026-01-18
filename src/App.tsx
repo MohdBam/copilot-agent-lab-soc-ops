@@ -6,6 +6,7 @@ import { BingoModal } from './components/BingoModal';
 function App() {
   const {
     gameState,
+    gameMode,
     board,
     winningSquareIds,
     showBingoModal,
@@ -30,6 +31,7 @@ function App() {
       {/* Content */}
       <div className="relative">
         <GameScreen
+          mode={gameMode}
           board={board}
           winningSquareIds={winningSquareIds}
           hasBingo={gameState === 'bingo'}

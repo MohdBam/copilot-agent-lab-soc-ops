@@ -1,7 +1,10 @@
-import type { BingoSquareData } from '../types';
+import { useMemo } from 'react';
+import type { BingoSquareData, GameMode } from '../types';
 import { BingoBoard } from './BingoBoard';
+import { ScavengerList } from './ScavengerList';
 
 interface GameScreenProps {
+  mode: GameMode;
   board: BingoSquareData[];
   winningSquareIds: Set<number>;
   hasBingo: boolean;
@@ -9,13 +12,25 @@ interface GameScreenProps {
   onReset: () => void;
 }
 
+function useScavengerProgress(board: BingoSquareData[]) {
+  return useMemo(() => {
+    const items = board.filter((item) => !item.isFreeSpace);
+    const completed = items.filter((item) => item.isMarked).length;
+    return { items, completed, total: items.length };
+  }, [board]);
+}
+
 export function GameScreen({
+  mode,
   board,
   winningSquareIds,
   hasBingo,
   onSquareClick,
   onReset,
 }: GameScreenProps) {
+  const isScavenger = mode === 'scavenger';
+  const { items: scavengerItems, completed, total } = useScavengerProgress(board);
+
   return (
     <div className="flex flex-col min-h-full">
       {/* Header with glass surface */}
@@ -33,26 +48,37 @@ export function GameScreen({
         <div className="w-16"></div>
       </header>
 
-      {/* Instructions */}
-      <p className="text-center text-[#94A3B8] text-sm py-3 px-4">
-        Tap a square when you find someone who matches it.
-      </p>
-
-      {/* Bingo indicator with amber glow */}
-      {hasBingo && (
-        <div className="bg-bingo/20 border-y border-bingo text-[#FFD859] text-center py-2.5 font-bold text-sm tracking-wide glow-bingo">
-          🎉 BINGO! You got a line!
-        </div>
-      )}
-
-      {/* Board */}
-      <div className="flex-1 flex items-center justify-center p-4">
-        <BingoBoard
-          board={board}
-          winningSquareIds={winningSquareIds}
+      {isScavenger ? (
+        <ScavengerList
+          items={scavengerItems}
+          completed={completed}
+          total={total}
           onSquareClick={onSquareClick}
         />
-      </div>
+      ) : (
+        <>
+          {/* Instructions */}
+          <p className="text-center text-[#94A3B8] text-sm py-3 px-4">
+            Tap a square when you find someone who matches it.
+          </p>
+
+          {/* Bingo indicator with amber glow */}
+          {hasBingo && (
+            <div className="bg-bingo/20 border-y border-bingo text-[#FFD859] text-center py-2.5 font-bold text-sm tracking-wide glow-bingo">
+              🎉 BINGO! You got a line!
+            </div>
+          )}
+
+          {/* Board */}
+          <div className="flex-1 flex items-center justify-center p-4">
+            <BingoBoard
+              board={board}
+              winningSquareIds={winningSquareIds}
+              onSquareClick={onSquareClick}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

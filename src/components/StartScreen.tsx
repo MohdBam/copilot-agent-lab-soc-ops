@@ -1,8 +1,14 @@
+import { useState } from 'react';
+import type { GameMode } from '../types';
+
 interface StartScreenProps {
-  onStart: () => void;
+  onStart: (mode: GameMode) => void;
 }
 
 export function StartScreen({ onStart }: StartScreenProps) {
+  const [selectedMode, setSelectedMode] = useState<GameMode>('bingo');
+
+  const handleStart = () => onStart(selectedMode);
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-6 relative">
       {/* Ambient edge glows */}
@@ -27,7 +33,7 @@ export function StartScreen({ onStart }: StartScreenProps) {
         </div>
         
         {/* Glass card with scanlines */}
-        <div className="glass-surface scanlines rounded-[var(--radius-lg)] p-6 border border-[#334155] mb-8">
+        <div className="glass-surface scanlines rounded-[var(--radius-lg)] p-6 border border-[#334155] mb-6">
           <h2 className="font-semibold text-[#E2E8F0] mb-4 text-lg">How to play</h2>
           <ul className="text-left text-[#94A3B8] text-sm space-y-2.5">
             <li className="flex items-start">
@@ -45,9 +51,38 @@ export function StartScreen({ onStart }: StartScreenProps) {
           </ul>
         </div>
 
+        {/* Mode selector */}
+        <div className="glass-surface rounded-[var(--radius-lg)] p-5 border border-[#334155] mb-6">
+          <p className="text-sm text-[#94A3B8] mb-3 font-semibold">Choose mode</p>
+          <div role="radiogroup" aria-label="Game mode" className="space-y-3 text-left">
+            <label className="flex items-center gap-3 text-[#E2E8F0]">
+              <input
+                type="radio"
+                name="mode"
+                value="bingo"
+                checked={selectedMode === 'bingo'}
+                onChange={() => setSelectedMode('bingo')}
+                className="accent-[var(--color-accent)] h-4 w-4"
+              />
+              <span className="text-sm">Bingo</span>
+            </label>
+            <label className="flex items-center gap-3 text-[#E2E8F0]">
+              <input
+                type="radio"
+                name="mode"
+                value="scavenger"
+                checked={selectedMode === 'scavenger'}
+                onChange={() => setSelectedMode('scavenger')}
+                className="accent-[var(--color-accent)] h-4 w-4"
+              />
+              <span className="text-sm">Scavenger Hunt</span>
+            </label>
+          </div>
+        </div>
+
         {/* CTA with cyan glow */}
         <button
-          onClick={onStart}
+          onClick={handleStart}
           className="w-full bg-accent text-[#0A0F14] font-bold py-4 px-8 rounded-[var(--radius-md)] text-lg transition-all glow-accent hover:glow-accent-strong active:scale-[0.98]"
           style={{
             transitionDuration: 'var(--dur-mid)',
