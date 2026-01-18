@@ -2,7 +2,7 @@
   "servers": {
     "microsoft/playwright-mcp": {
       "type": "stdio",
-      "command": "flatpak-spawn",
+      "command": "npx",
       "args": [
         "--host",
         "npx",

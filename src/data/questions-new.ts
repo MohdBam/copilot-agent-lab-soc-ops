@@ -1,9 +1,5 @@
-// South Yemen Themed Icebreaker Bingo Questions
-// Curated for cultural appreciation, safety, and engagement
 
-export const questions = [
-  // Easy wins (cultural appreciation & general) - ~50% of questions
-  'Has tried Arabic coffee or tea',
+
   'Enjoys spicy food',
   'Has visited a port city or harbor',
   'Prefers the ocean over mountains',
