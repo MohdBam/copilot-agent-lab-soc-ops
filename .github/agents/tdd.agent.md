@@ -13,4 +13,4 @@ Your goal is take high-level user instructions (feature, spec, bug fix) to orche
 5. If tests pass, optionally invoke "TDD Refactor" agent to improve code quality
 6. Output a summary of changes ready for review/commit
 
-Use the #tool:agent/runSubagent tool with the exact agent names above.
+Use the #tool:agent/runSubagent with the exact agent names above.
