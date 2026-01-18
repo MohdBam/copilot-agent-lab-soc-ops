@@ -4,6 +4,8 @@
       "type": "stdio",
       "command": "npx",
       "args": [
+        "--host",
+        "npx",
         "@playwright/mcp@latest",
         "--browser=msedge",
         // "--headless=true"  // Run in faster headless mode
