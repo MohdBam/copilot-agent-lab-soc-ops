@@ -1,61 +1,24 @@
-// South Yemen Themed Icebreaker Bingo Questions
-// Designed for inclusive cultural exchange at in-person mixers
-// Mix: 50% easy wins, 30% medium, 20% bold/interactive
 
-export const questions = [
-  // === EASY WINS (gimmes for flow) ===
-  'Has tried Arabic coffee or tea',
-  'Enjoys spicy food',
-  'Has visited a port city',
-  'Likes warm sunny weather',
-  'Knows how to say "hello" in Arabic',
-  'Has tasted dates',
-  'Enjoys listening to stories',
-  'Appreciates handmade crafts',
-  'Has been to a market',
-  'Enjoys learning about cultures',
-  'Has watched a Middle East documentary',
-  'Enjoys seafood',
-  'Has heard Middle Eastern music',
-  'Appreciates old architecture',
-  'Has drunk tea from a glass cup',
-  'Knows what frankincense is',
-  'Likes geometric patterns',
-  'Enjoys flatbread',
-  'Values hospitality',
-  'Prefers ocean over mountains',
+
+
+
+
+
+
+
   
-  // === MEDIUM (personal connections) ===
-  'Can share a journey story',
-  'Has learned about Yemeni culture',
-  'Tried learning another language',
-  'Has worked with someone from the Arab world',
-  'Can name an Arabian Sea port',
-  'Knows about ancient incense routes',
-  'Traveled to a coastal city abroad',
-  'Can share a coffee culture story',
-  'Interested in maritime history',
-  'Appreciates calligraphy art',
-  'Has studied trade routes',
-  'Knows a Yemen fact',
-  'Enjoys international cuisine',
-  'Has overcome a language barrier',
-  'Participated in cultural celebration',
+
+
+
   
-  // === BOLD & WILDCARDS (interactive) ===
-  'Teach an Arabic greeting now',
-  'Describe your dream port adventure',
-  'Share a geography surprise',
-  'Rock-paper-scissors: loser names 5 seas',
-  'Demonstrate a cultural greeting',
-  'Share your most exotic food try',
-  'Teach a 5-second skill',
-  'Name 3 historic trading cities',
-  'Describe a craft you want to learn',
-  'Show something you built',
+
+
+
+
+
   'Share a travel lesson',
   'Tell your favorite historical era',
   'Values community connection',
   'Has cross-cultural work experience',
   'Believes in cultural exchange',
-];
+
